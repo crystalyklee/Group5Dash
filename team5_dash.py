@@ -146,12 +146,11 @@ def prepare_features(df_input):
 # --------------------------
 # Dash App Setup
 # --------------------------
-app = dash.Dash(__name__, suppress_callback_exceptions=True)
-app.title = "Cancer Prediction Dashboard"
 app = dash.Dash(__name__, suppress_callback_exceptions=True) 
 app.title = "Cancer Prediction Dashboard"
-df['Sex'] = df['Sex'].cat.rename_categories({0: "Male", 1: "Female"}).astype(str)
 server = app.server
+
+df['Sex'] = df['Sex'].cat.rename_categories({0: "Male", 1: "Female"}).astype(str)
 
 biomarker_cols = ['CEA_Level', 'AFP_Level', 'WBC_Count', 'CRP_Level']
 df_biomarkers = df[['Cancer_Status'] + biomarker_cols].copy()
