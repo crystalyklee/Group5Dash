@@ -27,11 +27,6 @@ import seaborn as sns
 # --------------------------
 df = pd.read_csv("synthetic_cancer_data.csv")
 
-# Initialize Dash app
-app = dash.Dash(__name__)
-server = app.server
-app.title = "Canadian Cancer Statistics"
-
 # Define numeric columns and treat any negative values as missing
 check_columns = ['Age', 'Total_Mutations', 'CEA_Level', 'AFP_Level',
                  'WBC_Count', 'CRP_Level', 'Tumor_Size', 'Tumor_Density']
@@ -156,6 +151,7 @@ app.title = "Cancer Prediction Dashboard"
 app = dash.Dash(__name__, suppress_callback_exceptions=True) 
 app.title = "Cancer Prediction Dashboard"
 df['Sex'] = df['Sex'].cat.rename_categories({0: "Male", 1: "Female"}).astype(str)
+server = app.server
 
 biomarker_cols = ['CEA_Level', 'AFP_Level', 'WBC_Count', 'CRP_Level']
 df_biomarkers = df[['Cancer_Status'] + biomarker_cols].copy()
