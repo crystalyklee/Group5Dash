@@ -1,7 +1,9 @@
 dash
 pandas
+numpy
 plotly
 gunicorn
 scikit-learn
 seaborn
 matplotlib
+xgboost
